@@ -36,7 +36,6 @@
         <lombok.version>1.18.30</lombok.version>
         <mybatis-plus.version>3.5.2</mybatis-plus.version>
         <mybatis-plus-generator.version>3.5.1</mybatis-plus-generator.version>
-        <mockito.version>1.10.19</mockito.version>
         <it.ozimov.version>0.7.3</it.ozimov.version>
         <io.swagger.version>1.6.8</io.swagger.version>
         <org.lionsoul.version>2.6.5</org.lionsoul.version>
@@ -45,8 +44,13 @@
         <mysql-connector-java>8.0.31</mysql-connector-java>
         <spring.boot.version>2.7.10</spring.boot.version>
         <maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
-        <maven.surefire.plugin.version>2.5</maven.surefire.plugin.version>
+        <!-- 升级版本以支持junit5 -->
+        <maven.surefire.plugin.version>3.0.0-M7</maven.surefire.plugin.version>
         <maven.war.plugin.version>3.1.0</maven.war.plugin.version>
+        <!-- JUnit Jupiter 版本 -->
+        <junit.jupiter.version>5.9.2</junit.jupiter.version>
+        <!-- Mockito 版本（或直接用 mockito-inline）-->
+        <mockito.version>4.11.0</mockito.version>
     </properties>
 
     <!-- 依赖声明 -->
@@ -217,11 +221,34 @@
                 <scope>provided</scope>
             </dependency>
 
+            <!-- JUnit 5 -->
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${junit.jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>${junit.jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- Mockito -->
             <dependency>
                 <groupId>org.mockito</groupId>
-                <artifactId>mockito-all</artifactId>
+                <artifactId>mockito-core</artifactId>
                 <version>${mockito.version}</version>
                 <scope>test</scope>
+            </dependency>
+
+            <!-- 如果有需要 mock final/静态 -->
+            <dependency>
+              <groupId>org.mockito</groupId>
+              <artifactId>mockito-inline</artifactId>
+              <version>${mockito.version}</version>
+              <scope>test</scope>
             </dependency>
 
             <!-- 获取系统信息 -->

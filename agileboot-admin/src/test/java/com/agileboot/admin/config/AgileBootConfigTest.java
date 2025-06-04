@@ -24,9 +24,9 @@ public class AgileBootConfigTest {
         String fileBaseDir = "D:\\agileboot\\profile";
 
         Assertions.assertEquals("AgileBoot", config.getName());
-        Assertions.assertEquals("1.0.0", config.getVersion());
+        Assertions.assertEquals("1.8.0", config.getVersion());
         Assertions.assertEquals("2022", config.getCopyrightYear());
-        Assertions.assertTrue(config.isDemoEnabled());
+        Assertions.assertFalse(config.isDemoEnabled());
         Assertions.assertEquals(fileBaseDir, AgileBootConfig.getFileBaseDir());
         Assertions.assertFalse(AgileBootConfig.isAddressEnabled());
         Assertions.assertEquals("math", AgileBootConfig.getCaptchaType());
